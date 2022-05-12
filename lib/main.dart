@@ -1,5 +1,6 @@
 import 'package:covid_tracker/Widgets/info_screen.dart';
 import 'package:covid_tracker/constant.dart';
+import 'package:covid_tracker/screens/see_details_screen.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,6 +10,7 @@ import 'package:intl/intl.dart' as dt;
 import 'package:intl/intl.dart';
 import 'Widgets/counter.dart';
 import 'Widgets/my_header.dart';
+import 'package:covid_tracker/screens/see_details_screen.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 void main() {
@@ -119,6 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         underline: SizedBox(),
                         icon: SvgPicture.asset("assets/icons/dropdown.svg"),
                         value: countryname,
+
                         //TODO: Change the all not working country name
                         items: [
                           "Afghanistan",
@@ -406,12 +409,24 @@ class _HomeScreenState extends State<HomeScreen> {
                           ]),
                         ),
                         Spacer(),
-                        Text(
-                          'See Details',
-                          style: TextStyle(
-                            color: kPrimaryColor,
-                            fontWeight: FontWeight.w600,
+                        //TODO:new screen more details
+
+                        TextButton(
+                          child: Text(
+                            'See Details',
+                            style: TextStyle(
+                              color: kPrimaryColor,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      SeeDetails(countryname)),
+                            );
+                          },
                         ),
                       ],
                     ),
